@@ -1,0 +1,1 @@
+print('Good luck, {} {}'.format(input(), input()))
