@@ -1,5 +1,7 @@
 '''Quadratic equation'''
 
+print('For quadratic equation we used formula (ax**2 + bx + c = 0), where "**" - degree!')
+
 a = float(input("Enter number 'a': "))
 b = float(input("Enter number 'b': "))
 c = float(input("Enter number 'c': "))
