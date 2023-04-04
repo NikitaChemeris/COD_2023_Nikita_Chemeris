@@ -2,6 +2,7 @@
 
 CardFile = {}
 function = None
+BookId = 1
 
 while function != 'Cancel':
     function = input('''Select and Write a function for a book:
@@ -19,20 +20,22 @@ Enter: ''')
             genre = input('Genre book: ')
             binding = input('Binding (solid/soft) book: ')
 
-            CardFile[name] = {'Author': author,
-                              'Count pages': pages,
-                              'Genre': genre,
-                              'Binding': binding}
+            CardFile[BookId] = {'Name': name,
+                                'Author': author,
+                                'Count pages': pages,
+                                'Genre': genre,
+                                'Binding': binding}
 
-            print(f'Book "{name}" added')
+            print(f'Id {BookId} and book "{name}" added')
+            BookId += 1
             print('------------------')
         case 'Remove book':
-            DeleteBook = input('Write name book, if you want delete it: ')
+            DeleteBook = int(input('Write id book, if you want delete it: '))
             del CardFile[DeleteBook]
-            print(f'Book "{DeleteBook}" successfully removed')
+            print(f'Book id "{DeleteBook}" successfully removed')
             print('------------------')
         case 'Edit book':
-            name_book = input('Name book: ')
+            id = int(input('Enter id book: '))
             category = input('''What do you want to edit? Select and write in Enter:
 - Name
 - Author
@@ -40,17 +43,19 @@ Enter: ''')
 - Genre
 - Binding
 Enter: ''')
-            if category == 'Name':
-                CardFile[NewName := input('New name book: ')] = CardFile.pop(name_book)  # Rename key
-                print(f'New name book - "{NewName}"')
-            else:
-                CardFile[name_book][category] = (edit := input('Edit on: '))    # "edit" for format
-                print('The {} by book "{}" replaced by {}'.format(category, name_book, edit))
+            CardFile[id][category] = (edit := input('Edit on: '))  # "edit" for format
+            print('The {} by book id {} replaced by {}'.format(category, id, edit))
             print('------------------')
         case 'Found book':
-            print('Names of your books: ', end='')  # I won't replace words :)
-            print(*CardFile.keys(), sep=', ')
+            print(f'Your id and name book : {[(key, value["Name"]) for key, value in CardFile.items()]}')
+
+            info = input('Would you like look info about book? Yes or No: ')
+
+            if info == 'Yes':
+                book_id = int(input('Please enter id book: '))
+                print(CardFile[book_id])
             print('------------------')
+        case 'Cancel':
+            print('Good bye :)')
         case _:
             print('Wrong Enter!')
-            print('------------------')
