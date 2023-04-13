@@ -1,23 +1,25 @@
-# 3 sets
+# Sets
 
-list1 = list(input('Enter elements for the first list, separated spaces: ').split())
-list2 = list(input('Now for the second list: ').split())
-list3 = list(input('And finally for the third list: ').split())
+amount = int(input('How many set elements would you like enter: '))
+general_list = []
+
+for index_set in range(1, amount + 1):
+    general_list.append(input('Enter elements by spaces: ').split())
+    print(f'{index_set} set elements added')
 
 #No unique from lists
 
-NonUnique1 = [i for i in list1 if list1.count(i) > 1]
-NonUnique2 = [o for o in list2 if list2.count(o) > 1]
-NonUnique3 = [y for y in list3 if list3.count(y) > 1]
+NotUniqueElements = []
+
+for data_set in general_list:
+    for not_unique in data_set:
+        if data_set.count(not_unique) > 1:
+            NotUniqueElements.append(not_unique)
 
 print('----------------------------')
 
-print('''No unique elements from lists
-First list: {}
-Second list: {}
-Third list: {}'''.format(NonUnique1, NonUnique2, NonUnique3))
+print(f'No unique elements from lists {NotUniqueElements}')
 
 print('----------------------------')
 
-NoUnique = set(NonUnique1) ^ set(NonUnique2) ^ set(NonUnique3)
-print(f'Final result UNIQUE elements from 3 No unique lists: {NoUnique}')
+print(f'Final result UNIQUE elements from 3 No unique lists: {set(NotUniqueElements)}')
