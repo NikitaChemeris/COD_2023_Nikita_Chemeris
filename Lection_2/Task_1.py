@@ -7,7 +7,7 @@ elements = []
 
 while amount != 0:
     sentence = int(input('Enter count words in sentence: '))
-    for _ in range(sentence):   
+    for _ in range(sentence):   # We don't need "variable" for this :)
         elements.append(input('Enter word: '))
     amount -= 1
 print(f'Amount words = {len(elements)}')
