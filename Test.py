@@ -1,3 +1,6 @@
-def count(n):
-   return n
-print(count(int(input())))
+O = {'Test':
+        {'kolo': 2,
+         'kvadro': 5}}
+
+for key in O['Test'].keys():
+   print(key)

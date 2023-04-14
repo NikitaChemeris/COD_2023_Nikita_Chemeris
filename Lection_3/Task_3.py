@@ -1,9 +1,7 @@
 # Update card file
 
 def add():
-    global CardFile
-
-    CardFile[BookId] = {
+    description = {
         'Name': input('Name book: '),
         'Author': input('Author book: '),
         'Count pages': int(input('Count pages book: ')),
@@ -11,20 +9,16 @@ def add():
         'Binding': input('Binding (solid/soft) book: ')
     }
 
-    return 'Book id {} and name book "{}" added'.format(BookId, CardFile[BookId]['Name'])
+    print('Book id {} and name book "{}" added'.format(BookId, description['Name']))
+    return description
 
 
 def remove(input_id):
-    global CardFile
-
-    del CardFile[input_id]
-
-    return f'Book id {input_id} deleted'
+    print(f'Book id {input_id} deleted')
+    return input_id
 
 
-def edit(input_id):
-    global CardFile
-
+def edit(change_BookId):
     category = input("""What do you want to edit? Select and write in Enter:
 1.Name
 2.Author
@@ -32,10 +26,11 @@ def edit(input_id):
 4.Genre
 5.Binding
 Please, Enter: """)
+    update = input('Edit on: ')
 
-    CardFile[input_id][category] = (edit := input('Edit on: '))
-
-    return 'The {} book id {} replaced by {}'.format(category, input_id, edit)
+    UpdateCardFile = {change_BookId: {category: update}}
+    print('The {} book id {} replaced by {}'.format(category, change_BookId, update))
+    return UpdateCardFile
 
 
 def found():
@@ -45,14 +40,11 @@ def found():
 
     if info == 'Yes':
         input_id = int(input('Please enter id book: '))
-        return CardFile[input_id]
-    else:
-        return ''
+        print(CardFile[input_id])
 
 
 CardFile = {}
 BookId, function = 0, None
-spaces = '-' * 35
 
 while function != 'Close':
     function = input('''Select and Write a function for a book:
@@ -65,17 +57,23 @@ Enter: ''')
 
     match function:
         case 'Add book':
-            complete = add()
+            CardFile[BookId] = add()
             BookId += 1
         case 'Remove book':
-            complete = remove(int(input('Write Id book if you want delete it: ')))
+            del CardFile[remove(int(input('Write Id book if you want delete it: ')))]
         case 'Edit book':
-            complete = edit(int(input('Write Id book and will edit this: ')))
-        case 'Found book':
-            complete = found()
-        case 'Close':
-            complete = 'See you around :)'
-        case _:
-            complete = 'Wrong Enter!'
+            change_BookId = int(input('Write Id book and will edit this: '))
+            UpdateCardFile = edit(change_BookId)
 
-    print('', complete, spaces, sep='\n')
+            for key in CardFile[change_BookId].keys():  # CardFile know where update function
+                if key in UpdateCardFile[change_BookId].keys():
+                    CardFile[change_BookId][key] = UpdateCardFile[change_BookId][key]
+                    break
+        case 'Found book':
+            found()
+        case 'Close':
+            print('See you around :)')
+        case _:
+            print('Wrong Enter!')
+
+    print('-' * 35)
