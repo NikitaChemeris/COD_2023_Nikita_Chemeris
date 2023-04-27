@@ -1,1 +1,1 @@
-print('Nothing')
+print('Real nothing')
