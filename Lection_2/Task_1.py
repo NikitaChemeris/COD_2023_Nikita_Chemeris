@@ -1,13 +1,9 @@
-'''Counting the Number of Input Elements'''
+'''Counting element'''
 
-amount = 3
-print(f'Please Enter {amount} sentence')
+elements = input('Enter elements through space: ').split(' ')
+element = input('Write an element to count: ')
 
-elements = []
-
-while amount != 0:
-    sentence = int(input('Enter count words in sentence: '))
-    for _ in range(sentence):   # We don't need "variable" for this :)
-        elements.append(input('Enter word: '))
-    amount -= 1
-print(f'Amount words = {len(elements)}')
+if element in elements:
+    print('Chosen element "{}": where {} it count repetition!'.format(element, elements.count(element)))
+else:
+    print(f'Chosen element "{element}" not found')
