@@ -1,4 +1,4 @@
-'''Counting element'''
+'''Counting element!'''
 
 elements = input('Enter elements through space: ').split(' ')
 element = input('Write an element to count: ')
