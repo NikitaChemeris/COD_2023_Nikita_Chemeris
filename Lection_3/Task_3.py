@@ -14,7 +14,7 @@ def add():
 
 
 def remove(input_id):
-    print(f'Book id {input_id} deleted')
+    print(f'Book id {input_id} and name book "{CardFile[input_id]["Name"]}" deleted')
     return input_id
 
 
