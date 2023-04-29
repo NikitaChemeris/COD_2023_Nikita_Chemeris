@@ -5,7 +5,7 @@ TYPE:
 1.small 5 - 11
 2.medium 13 - 21
 3.big 23>
------------------""")
+------------------""")
 size = int(input('Enter size romb: '))
 
 
