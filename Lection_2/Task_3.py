@@ -1,25 +1,15 @@
 # Sets
 
-amount = int(input('How many set elements would you like enter: '))
-general_list = []
+general_list_sets = []
+NonUniqueElements = []
 
-for index_set in range(1, amount + 1):
-    general_list.append(input('Enter elements by spaces: ').split())
-    print(f'{index_set} set elements added')
+for index_set in range(1, 4):
+    sets = set(input(f'Enter {index_set} set elements through a space: ').split(' '))
+    general_list_sets.append(sets)
+print('Sets done!\n')
 
-#No unique from lists
+for element in general_list_sets[0]:  # We don't need check other lists through for
+    if element in general_list_sets[1] and element in general_list_sets[2]:
+        NonUniqueElements.append(element)
 
-NotUniqueElements = []
-
-for data_set in general_list:
-    for not_unique in data_set:
-        if data_set.count(not_unique) > 1:
-            NotUniqueElements.append(not_unique)
-
-print('----------------------------')
-
-print(f'No unique elements from lists {NotUniqueElements}')
-
-print('----------------------------')
-
-print(f'Final result UNIQUE elements from 3 No unique lists: {set(NotUniqueElements)}')
+print(f'Non unique elements: {NonUniqueElements}')
