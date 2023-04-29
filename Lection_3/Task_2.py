@@ -1,14 +1,23 @@
 # Romb with recursion
 
-def romb(amount_lines):
-    if amount_lines == 15:
+print("""Size romb, it must be odd number!
+TYPE:
+1.small 5 - 11
+2.medium 13 - 21
+3.big 23>
+-----------------""")
+amount_lines = int(input('Enter size romb: '))
+
+
+def romb(process):
+    if process == amount_lines:
         return
     else:
-        top = '*' * amount_lines
-        print(top.center(15))
-        romb(amount_lines + 2)
-        down = '*' * (amount_lines - 2)  # (n - 2) - for side corners
-        print(down.center(15))
+        top = '*' * process
+        print(top.center(amount_lines))
+        romb(process + 2)
+        down = '*' * (process - 2)
+        print(down.center(amount_lines))
         return ''
 
 
