@@ -12,4 +12,4 @@ for element in general_list_sets[0]:  # We don't need check other lists through 
     if element in general_list_sets[1] and element in general_list_sets[2]:
         NonUniqueElements.append(element)
 
-print(f'Non unique elements: {NonUniqueElements}')
+print(f'Non unique elements from 3 sets: {NonUniqueElements}')
