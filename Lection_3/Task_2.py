@@ -6,18 +6,18 @@ TYPE:
 2.medium 13 - 21
 3.big 23>
 -----------------""")
-amount_lines = int(input('Enter size romb: '))
+size = int(input('Enter size romb: '))
 
 
 def romb(process):
-    if process == amount_lines:
+    if process == size:
         return
     else:
         top = '*' * process
-        print(top.center(amount_lines))
+        print(top.center(size))
         romb(process + 2)
         down = '*' * (process - 2)
-        print(down.center(amount_lines))
+        print(down.center(size))
         return ''
 
 
