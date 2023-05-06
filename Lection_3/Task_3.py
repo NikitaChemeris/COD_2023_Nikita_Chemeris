@@ -1,5 +1,8 @@
 # Update card file
 
+CardFile = {}
+
+
 def add():
     description = {
         'Name': input('Name book: '),
@@ -13,8 +16,9 @@ def add():
     return description
 
 
-def remove(input_id):
+def delete(input_id):
     print(f'Book id {input_id} and name book "{CardFile[input_id]["Name"]}" deleted')
+    del CardFile[input_id]
     return input_id
 
 
@@ -28,9 +32,9 @@ def edit(change_BookId):
 Please, Enter: """)
     update = input('Edit on: ')
 
-    UpdateCardFile = {change_BookId: {category: update}}
+    CardFile[change_BookId][category] = update
     print('The {} book id {} replaced by {}'.format(category, change_BookId, update))
-    return UpdateCardFile
+    return CardFile
 
 
 def found():
@@ -43,13 +47,12 @@ def found():
         print(CardFile[input_id])
 
 
-CardFile = {}
 BookId, function = 0, None
 
 while function != 'Close':
     function = input('''Select and Write a function for a book:
 - Add book
-- Remove book
+- Delete book
 - Edit book
 - Found book
 - Close
@@ -59,16 +62,10 @@ Enter: ''')
         case 'Add book':
             CardFile[BookId] = add()
             BookId += 1
-        case 'Remove book':
-            del CardFile[remove(int(input('Write Id book if you want delete it: ')))]
+        case 'Delete book':
+            delete(int(input('Write book id which you want delete: ')))
         case 'Edit book':
-            change_BookId = int(input('Write Id book and will edit this: '))
-            UpdateCardFile = edit(change_BookId)
-
-            for key in CardFile[change_BookId].keys():  # CardFile know where update function
-                if key in UpdateCardFile[change_BookId].keys():
-                    CardFile[change_BookId][key] = UpdateCardFile[change_BookId][key]
-                    break
+            edit(int(input('Write Id book and will edit this: ')))
         case 'Found book':
             found()
         case 'Close':
