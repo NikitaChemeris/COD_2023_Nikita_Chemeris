@@ -1,15 +1,17 @@
 # Sets
 
 general_list_sets = []
-NonUniqueElements = []
 
 for index_set in range(1, 4):
     sets = set(input(f'Enter {index_set} set elements through a space: ').split(' '))
-    general_list_sets.append(sets)
+    general_list_sets.extend(sets)
 print('Sets done!\n')
 
-for element in general_list_sets[0]:  # We don't need check other lists through cycle "for"
-    if element in general_list_sets[1] and element in general_list_sets[2]:
-        NonUniqueElements.append(element)
+NonUnique = []
 
-print(f'Non unique elements from 3 sets: {NonUniqueElements}')
+for element in general_list_sets:
+    if general_list_sets.count(element) == 3:
+        NonUnique.append(element)
+
+
+print(f'Non unique elements from 3 sets:{set(NonUnique)}')
