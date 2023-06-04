@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=700">
+
+		<title>LOG IN</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}" />
+		
+
+	</head>
+
+
+	<body>
+
+		<form class="logs" method="POST" action="/login">
+			<div >
+				<h1>Login</h1>
+				<p >Please, complete this form to login an account.</p>
+				
+
+				<label for="username">Login</label><br/>
+				<input type="text" id="username" placeholder="Write your login" name="username" required /> <br/>
+				<ul>
+					<p style="color:red;">{{ not_exist | safe }}</p>	<!-- Error with username -->
+				</ul>
+				<label for="psw">Password</label><br/>
+				<input type="password" id="psw" placeholder="Enter password" name="psw" required /><br/>
+				<ul>
+					<p style="color:red;">{{ invalid | safe }}</p>		<!-- Error with password -->
+				</ul>
+				<div class="clearfix">
+      				<button type="submit" class="signupbtn">Login</button>
+    			</div>
+			</div>
+		</form>
+		
+		
+	</body>
+</html>
