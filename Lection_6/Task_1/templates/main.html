@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Breaking News</title>
+	</head>
+	<body style="background-color:grey ; overflow-y: scroll;">
+		<header><h1>Breaking News</h1></header>
+		<a target="_blank" href="/redirect_add"><button>Add Article</button></a><br>
+ <hr>
+		<div>
+			<article>
+				<form action="/">
+					{% for title in title_news %}
+					<a target="_blank" href="{{ url_for('reading', name=title) }}"><h2>{{ title }}</h2></a>
+					<p>Touch on title...</p>
+					<hr>
+					{% endfor %}
+				</form>
+			</article>
+		</div><hr>
+
+
+
+	</body>
+</html>
